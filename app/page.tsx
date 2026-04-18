@@ -10,7 +10,7 @@ const EVENT = {
   venue: "Urban Sport Dome",
   date: "10 Mei 2026",
   time: "14:00 - 16:00",
-  whatsappNumber: "6281234567890",
+  whatsappNumber: "6285812808632",
   whatsappMessage:
     "Halo KKS, saya ingin konfirmasi kehadiran untuk event 1st Anniversary KKS.",
 };
@@ -459,7 +459,7 @@ export default function Page() {
                 transition={{ delay: 3.05, duration: 0.7 }}
                 className="mx-auto mt-5 max-w-xl text-base leading-7 text-white/58 sm:mt-6 sm:text-lg lg:mx-0"
               >
-                Merayakan satu tahun penuh passion, persahabatan, dan energi sepak bola dalam atmosfer neon yang modern, bersih, dan tetap terasa premium.
+               Rayakan satu tahun penuh semangat, kebersamaan, dan euforia sepak bola yang tak terlupakan.
               </motion.p>
 
               <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center">
@@ -576,7 +576,7 @@ export default function Page() {
                   transition={{ delay: 3.08, duration: 0.7 }}
                   className="mx-auto mt-5 max-w-sm text-sm leading-7 text-white/58"
                 >
-                  Merayakan satu tahun penuh passion, persahabatan, dan energi sepak bola dalam atmosfer neon yang modern dan premium.
+                  Rayakan satu tahun penuh semangat, kebersamaan, dan euforia sepak bola yang tak terlupakan.
                 </motion.p>
 
                 <motion.div
