@@ -108,8 +108,8 @@ function SplashScreen({ onDone }: { onDone: () => void }) {
             <Image
               src="/logo-gradient.png"
               alt="KKS Logo"
-              width={240}
-              height={240}
+              width={180}
+              height={180}
               className="relative h-36 w-36 object-contain drop-shadow-[0_0_34px_rgba(34,211,238,0.32)] sm:h-44 sm:w-44"
               priority
             />
@@ -348,6 +348,7 @@ function MobilePosterInfo() {
 
 export default function Page() {
   const [showSplash, setShowSplash] = useState(true);
+  const [showRundown, setShowRundown] = useState(false);
 
   const whatsappLink = useMemo(
     () => buildWhatsAppLink(EVENT.whatsappNumber, EVENT.whatsappMessage),
@@ -381,15 +382,15 @@ export default function Page() {
           <Image
             src="/logo-gradient.png"
             alt="KKS Logo"
-            width={800}
-            height={800}
+            width={190}
+            height={190}
             priority
             className="h-28 w-28 object-contain drop-shadow-[0_0_30px_rgba(34,211,238,0.24)] sm:h-32 sm:w-32 lg:h-36 lg:w-36"
           />
         </motion.header>
 
         <section className="relative flex flex-1 items-center justify-center py-4 sm:py-6 lg:py-2">
-          <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+          <div className="mx-auto hidden w-full max-w-6xl items-center gap-10 lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -402,7 +403,7 @@ export default function Page() {
                 transition={{ delay: 2.18, duration: 0.7 }}
                 className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.34em] text-white/56 backdrop-blur-md"
               >
-                You are invited
+                Your are invited
               </motion.div>
 
               <div className="mt-6 sm:mt-8">
@@ -461,29 +462,248 @@ export default function Page() {
                 Merayakan satu tahun penuh passion, persahabatan, dan energi sepak bola dalam atmosfer neon yang modern, bersih, dan tetap terasa premium.
               </motion.p>
 
-              <motion.a
-                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 3.18, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-                href={whatsappLink}
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-8 inline-flex items-center justify-center rounded-full border border-cyan-300/28 bg-gradient-to-r from-cyan-400/18 via-blue-500/18 to-fuchsia-500/18 px-7 py-4 text-sm font-semibold text-white shadow-[0_0_34px_rgba(34,211,238,0.18)] backdrop-blur-md transition hover:border-cyan-200/38 hover:shadow-[0_0_46px_rgba(34,211,238,0.24)] sm:mt-9 sm:text-base"
-              >
-                Confirm Kehadiran via WhatsApp
-              </motion.a>
+              <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center">
+                <motion.a
+                  initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ delay: 3.18, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center rounded-full border border-cyan-300/28 bg-gradient-to-r from-cyan-400/18 via-blue-500/18 to-fuchsia-500/18 px-7 py-4 text-sm font-semibold text-white shadow-[0_0_34px_rgba(34,211,238,0.18)] backdrop-blur-md transition hover:border-cyan-200/38 hover:shadow-[0_0_46px_rgba(34,211,238,0.24)] sm:text-base"
+                >
+                  Konfirmasi Kehadiran via WhatsApp
+                </motion.a>
 
-              <MobilePosterInfo />
+                <motion.button
+                  type="button"
+                  initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ delay: 3.26, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setShowRundown(true)}
+                  className="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/[0.05] px-7 py-4 text-sm font-semibold text-white/92 shadow-[0_0_24px_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:bg-white/[0.08] sm:text-base"
+                >
+                  Detail Acara
+                </motion.button>
+              </div>
             </motion.div>
 
             <div className="hidden lg:block">
               <PremiumInfoCard />
             </div>
           </div>
+
+          <div className="mx-auto w-full max-w-md lg:hidden">
+            <motion.div
+              initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ delay: 2.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="relative overflow-hidden rounded-[34px] border border-white/10 bg-slate-950/28 px-5 pb-5 pt-6 shadow-[0_0_40px_rgba(15,23,42,0.32)] backdrop-blur-2xl"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.16),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(34,211,238,0.12),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(244,114,182,0.12),transparent_32%)]" />
+              <div className="absolute left-1/2 top-0 h-24 w-48 -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+
+              <div className="relative z-10 text-center">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.94 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 2.2, duration: 0.65 }}
+                  className="mx-auto inline-flex rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.34em] text-white/56 backdrop-blur-md"
+                >
+                  Your are invited
+                </motion.div>
+
+                <div className="mt-6">
+                  <div className="flex items-end justify-center gap-3">
+                    <div className="relative leading-none">
+                      <span className="bg-gradient-to-b from-cyan-300 via-blue-300 to-blue-500 bg-clip-text text-[5.2rem] font-black tracking-tight text-transparent drop-shadow-[0_0_24px_rgba(34,211,238,0.24)]">
+                        1
+                      </span>
+                      <motion.span
+                        initial={{ opacity: 0, scale: 0.6, x: -8 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        transition={{ delay: 2.36, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute -right-8 top-4 rounded-full border border-fuchsia-300/28 bg-fuchsia-400/10 px-3 py-1 text-sm font-black italic tracking-[0.18em] text-fuchsia-100 shadow-[0_0_18px_rgba(217,70,239,0.18)]"
+                      >
+                        ST
+                      </motion.span>
+                    </div>
+                    <motion.h1
+                      initial={{ opacity: 0, y: 18 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 2.48, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                      className="bg-gradient-to-r from-cyan-300 via-violet-300 to-rose-400 bg-clip-text text-[2rem] font-black uppercase leading-none tracking-tight text-transparent"
+                    >
+                      ANNIVERSARY
+                    </motion.h1>
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.7, duration: 0.8 }}
+                    className="mt-1"
+                  >
+                    <span className="block bg-gradient-to-r from-white via-slate-100 to-rose-100 bg-clip-text text-[4.3rem] font-black uppercase leading-none tracking-tight text-transparent drop-shadow-[0_0_20px_rgba(255,255,255,0.14)]">
+                      KKS
+                    </span>
+                  </motion.div>
+                </div>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 2.9, duration: 0.7 }}
+                  className="mt-4 text-xl font-medium text-white/76"
+                >
+                  {EVENT.subtitle}
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, scaleX: 0.4 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ delay: 3.02, duration: 0.7 }}
+                  className="mx-auto mt-5 h-px w-32 bg-gradient-to-r from-cyan-300/0 via-cyan-300/70 to-fuchsia-400/0"
+                />
+
+                <motion.p
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 3.08, duration: 0.7 }}
+                  className="mx-auto mt-5 max-w-sm text-sm leading-7 text-white/58"
+                >
+                  Merayakan satu tahun penuh passion, persahabatan, dan energi sepak bola dalam atmosfer neon yang modern dan premium.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 22, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ delay: 3.18, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-7 rounded-[26px] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-xl"
+                >
+                  <div className="space-y-3.5">
+                    <InfoRow
+                      icon={<MapPin className="h-5 w-5" />}
+                      label="Location"
+                      value={EVENT.venue}
+                    />
+                    <InfoRow
+                      icon={<CalendarDays className="h-5 w-5 text-fuchsia-300" />}
+                      label="Date & Time"
+                      value={`${EVENT.date} • ${EVENT.time}`}
+                    />
+                  </div>
+                </motion.div>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 3.28, duration: 0.7 }}
+                  className="mt-6 text-[1.45rem] font-semibold leading-snug text-white/82"
+                >
+                  Celebrating One Year of
+                  <span className="mt-1 block bg-gradient-to-r from-cyan-300 via-white to-fuchsia-300 bg-clip-text text-transparent">
+                    Passion, Unity & Football
+                  </span>
+                </motion.p>
+
+                <div className="mt-7 flex flex-col gap-3">
+                  <motion.a
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3.38, duration: 0.75 }}
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex w-full items-center justify-center rounded-full border border-cyan-300/28 bg-gradient-to-r from-cyan-400/18 via-blue-500/18 to-fuchsia-500/18 px-6 py-4 text-sm font-semibold text-white shadow-[0_0_32px_rgba(34,211,238,0.18)] backdrop-blur-md"
+                  >
+                    Konfirmasi Kehadiran via WhatsApp
+                  </motion.a>
+
+                  <motion.button
+                    type="button"
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3.46, duration: 0.75 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setShowRundown(true)}
+                    className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/[0.05] px-6 py-4 text-sm font-semibold text-white/92 shadow-[0_0_24px_rgba(255,255,255,0.06)] backdrop-blur-md"
+                  >
+                    Detail Acara
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </section>
       </div>
+          <AnimatePresence>
+        {showRundown ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 px-5 backdrop-blur-sm"
+            onClick={() => setShowRundown(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.94 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.96 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-md overflow-hidden rounded-[30px] border border-white/12 bg-slate-950/80 p-5 shadow-[0_0_40px_rgba(15,23,42,0.45)] backdrop-blur-2xl sm:p-6"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.14),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(244,114,182,0.14),transparent_24%)]" />
+              <div className="relative">
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-white/42">
+                      Detail Acara
+                    </p>
+                    <h3 className="mt-2 text-2xl font-bold text-white">Rundown Singkat</h3>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowRundown(false)}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-white/80 transition hover:bg-white/[0.08]"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className="space-y-3">
+                  {[
+                    { title: "Fun Football", delay: 0.05 },
+                    { title: "Doorprize", delay: 0.12 },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, x: -18 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: item.delay, duration: 0.35 }}
+                      className="flex items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.05] px-4 py-4"
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400/20 to-fuchsia-500/20 text-sm font-bold text-cyan-200 shadow-[0_0_18px_rgba(34,211,238,0.14)]">
+                        0{index + 1}
+                      </div>
+                      <div>
+                        <p className="text-lg font-semibold text-white">{item.title}</p>
+                        <p className="text-sm text-white/50">Highlight acara anniversary KKS</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </main>
   );
 }
