@@ -459,7 +459,9 @@ export default function Page() {
                 transition={{ delay: 3.05, duration: 0.7 }}
                 className="mx-auto mt-5 max-w-xl text-base leading-7 text-white/58 sm:mt-6 sm:text-lg lg:mx-0"
               >
-               Rayakan satu tahun penuh semangat, kebersamaan, dan euforia sepak bola yang tak terlupakan.
+               From First Game to First Anniversary
+               <br />
+               One Team, One Journey, One Amazing Year.
               </motion.p>
 
               <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center">
@@ -576,7 +578,7 @@ export default function Page() {
                   transition={{ delay: 3.08, duration: 0.7 }}
                   className="mx-auto mt-5 max-w-sm text-sm leading-7 text-white/58"
                 >
-                  Rayakan satu tahun penuh semangat, kebersamaan, dan euforia sepak bola yang tak terlupakan.
+                  From First Game to First AnniversaryOne Team, One Journey, One Amazing Year
                 </motion.p>
 
                 <motion.div
